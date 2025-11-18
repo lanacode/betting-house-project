@@ -31,18 +31,7 @@ body.dark-mode {
     --color-footer-text: #ffffff;
 }
 
-@media (prefers-color-scheme: dark) {
-    :root {
-        --color-background: #121212;
-        --color-surface: #1e1e1e;
-        --color-text: #ffffff;
-        --color-text-secondary: #e0e0e0;
-        --color-border: #333333;
-        --color-header-bg: #1e1e1e;
-        --color-footer-bg: #000000;
-        --color-footer-text: #ffffff;
-    }
-}
+
 
 * {
     box-sizing: border-box;
@@ -255,84 +244,4 @@ h1, h2, h3, h4, h5 {
     padding: 2rem;
     text-align: center;
     color: var(--color-text-secondary);
-}
-
-/* ================================================= */
-/* ESTILOS PARA O FILTRO DA HOME (Modalidades/Ligas) */
-/* ================================================= */
-/* Este bloco foi adicionado para estilizar as grades de botões da Home */
-
-.grid-categorias {
-    display: grid;
-    /* Define o layout de grade para os botões de categoria */
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    /* Cria colunas responsivas */
-    gap: 1rem;
-    /* Espaçamento entre os cards */
-    margin-top: 1rem;
-    /* Espaço acima da grade */
-}
-
-.card-categoria {
-    background-color: var(--color-surface);
-    /* Cor de fundo do card */
-    border: 1px solid var(--color-border);
-    /* Borda do card */
-    border-radius: var(--border-radius);
-    /* Cantos arredondados */
-    padding: 1.5rem;
-    /* Espaçamento interno */
-    display: flex;
-    /* Alinhamento dos itens internos */
-    flex-direction: column;
-    /* Organiza os itens em coluna (ícone em cima, texto embaixo) */
-    align-items: center;
-    /* Centraliza horizontalmente */
-    justify-content: center;
-    /* Centraliza verticalmente */
-    gap: 0.5rem;
-    /* Espaço entre o ícone e o texto */
-    cursor: pointer;
-    /* Mostra a "mãozinha" ao passar o mouse */
-    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
-    /* Animação suave */
-    height: 120px;
-    /* Altura fixa para todos os cards ficarem iguais */
-}
-
-.card-categoria:hover {
-    transform: translateY(-3px);
-    /* Levanta o card levemente ao passar o mouse */
-    border-color: var(--color-primary);
-    /* Muda a cor da borda */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    /* Adiciona uma sombra suave */
-}
-
-.cat-icon {
-    font-size: 2.5rem;
-    /* Tamanho do ícone (emoji) */
-}
-
-.cat-nome {
-    font-weight: 600;
-    /* Texto em negrito */
-    color: var(--color-text);
-    /* Cor do texto */
-    font-size: 1rem;
-    /* Tamanho da fonte */
-    text-align: center;
-    /* Centraliza o texto */
-}
-
-.card-liga {
-    height: 80px;
-    /* Altura menor para os cards de liga (sem ícone) */
-    background-color: var(--color-background);
-    /* Fundo levemente cinza */
-}
-
-.card-liga .cat-nome {
-    font-size: 0.9rem;
-    /* Fonte um pouco menor para as ligas */
 }

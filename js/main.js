@@ -1,16 +1,10 @@
-// Arquivo: js/main.js
-
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. VERIFICAÇÃO DE LOGIN (Importante para esconder botão Entrar)
-    // O usuario.js precisa ter sido carregado antes
     if (typeof UsuarioManager !== 'undefined') {
         UsuarioManager.atualizarInterfaceHeader();
     }
 
-    // 2. Inicializa elementos visuais (Tema, Menu, Links)
     inicializarInterface();
 
-    // 3. ROTEADOR: Decide o que mostrar na tela
     const url = window.location.pathname;
 
     if (url.includes('futebol.html')) {
@@ -29,12 +23,10 @@ document.addEventListener('DOMContentLoaded', () => {
         renderizarPaginaEspecifica('E-Sports');
     } 
     else {
-        // Home (index.html)
         renderizarHomeVitrine();
     }
 });
 
-// --- FUNÇÃO 1: RENDERIZA A HOME (VITRINE) ---
 function renderizarHomeVitrine() {
     const container = document.getElementById('lista-eventos');
     if (!container) return;
@@ -74,13 +66,11 @@ function renderizarHomeVitrine() {
         container.appendChild(sectionGroup);
     });
 
-    // INTEGRACAO COM BILHETE: Recupera cores amarelas se já houver apostas
     if(typeof atualizarVisualBotoes === 'function') {
         atualizarVisualBotoes();
     }
 }
 
-// --- FUNÇÃO 2: RENDERIZA PÁGINA ESPECÍFICA ---
 function renderizarPaginaEspecifica(esporteAlvo) {
     const container = document.getElementById('lista-eventos');
     if (!container) return;
@@ -114,13 +104,11 @@ function renderizarPaginaEspecifica(esporteAlvo) {
         container.appendChild(sectionGroup);
     }
 
-    // INTEGRACAO COM BILHETE
     if(typeof atualizarVisualBotoes === 'function') {
         atualizarVisualBotoes();
     }
 }
 
-// --- FUNÇÃO AUXILIAR: CRIA O HTML DO CARD ---
 function criarCardHTML(jogo) {
     const card = document.createElement('article');
     card.className = 'card-jogo';
@@ -150,10 +138,8 @@ function criarCardHTML(jogo) {
 
         labelsHTML += `<li>${label}</li>`;
         
-        // ID Único para o botão (usado pelo bilhete.js para pintar de amarelo)
         const btnId = `odd-${jogo.id}-${op.selecao_key}`;
         
-        // AQUI ESTÁ A MÁGICA: Chama gerenciarAposta do bilhete.js
         valuesHTML += `
             <li class="odd-item" 
                 id="${btnId}"
@@ -193,9 +179,7 @@ function criarCardHTML(jogo) {
     return card;
 }
 
-// --- FUNÇÃO AUXILIAR: GERENCIA A INTERFACE (TEMA, MENU, LINKS) ---
 function inicializarInterface() {
-    // 1. TEMA ESCURO
     const btnTema = document.getElementById('btn-tema');
     const body = document.body;
     const CHAVE_TEMA = 'betsim_tema';
@@ -220,7 +204,6 @@ function inicializarInterface() {
         });
     }
 
-    // 2. MENU MOBILE
     const btnMobile = document.getElementById('btn-mobile');
     const nav = document.getElementById('nav-principal');
     if (btnMobile && nav) {
@@ -231,7 +214,6 @@ function inicializarInterface() {
         });
     }
 
-    // 3. LINK ATIVO
     const links = document.querySelectorAll('.navegacao-principal a');
     const urlAtual = window.location.href;
     links.forEach(link => {
