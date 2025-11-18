@@ -1,130 +1,183 @@
-/*
- * Arquivo: css/responsivo.css
- * Descrição: Media Queries para garantir a adaptabilidade em tablets e smartphones.
- */
+/* Arquivo: css/responsivo.css */
 
-/* Tablet (Telas até 1024px) */
+/* ================================================= */
+/* ESTILOS PADRÃO DO MENU MOBILE (Escondido no Desktop) */
+/* ================================================= */
+.btn-mobile {
+    display: none; /* Escondido em telas grandes */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.hamburger {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: var(--color-text);
+    position: relative;
+    transition: 0.3s;
+}
+
+.hamburger::before,
+.hamburger::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background: var(--color-text);
+    left: 0;
+    transition: 0.3s;
+}
+
+.hamburger::before { top: -8px; }
+.hamburger::after { top: 8px; }
+
+/* Animação do X quando aberto */
+.btn-mobile.ativo .hamburger { background: transparent; }
+.btn-mobile.ativo .hamburger::before { top: 0; transform: rotate(45deg); }
+.btn-mobile.ativo .hamburger::after { top: 0; transform: rotate(-45deg); }
+
+
+/* ================================================= */
+/* TABLET E MOBILE (Telas até 1024px) */
+/* ================================================= */
 @media (max-width: 1024px) {
 
-    /* LAYOUT: Transforma o grid principal em empilhamento */
+    /* HEADER: Ajuste para acomodar o botão */
+    .cabecalho-principal {
+        padding: 1rem;
+        position: sticky;
+        /* Garante que o header fique fixo */
+        top: 0;
+        z-index: 1000;
+    }
+
+    .logo img {
+        height: 40px; /* Logo menor no mobile para economizar espaço */
+    }
+
+    .logo h1 {
+        font-size: 1.2rem;
+    }
+
+    /* BOTÃO MOBILE: Aparece agora */
+    .btn-mobile {
+        display: flex;
+        align-items: center;
+        z-index: 1001; /* Acima do menu */
+        order: 3; /* Fica na direita */
+    }
+
+    /* AÇÕES DE USUÁRIO (Login/Tema) */
+    .acoes-usuario {
+        order: 2; /* Fica entre logo e menu */
+        margin-left: auto; /* Empurra para a direita */
+        margin-right: 10px;
+    }
+    
+    .acoes-usuario .btn-entrar {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
+    }
+
+    /* MENU SUSPENSO (Lógica Principal) */
+    .navegacao-principal {
+        position: absolute;
+        top: 100%; /* Cola logo abaixo do header */
+        left: 0;
+        width: 100%;
+        height: 0; /* Altura zero = escondido */
+        background-color: var(--color-header-bg);
+        overflow: hidden; /* Esconde o conteúdo */
+        transition: height 0.4s ease; /* Animação suave */
+        box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    /* Classe que o JS vai adicionar para abrir o menu */
+    .navegacao-principal.ativa {
+        height: 320px; /* Altura suficiente para os links */
+    }
+
+    .navegacao-principal ul {
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem 0;
+        gap: 1.5rem;
+    }
+
+    .navegacao-principal a {
+        font-size: 1.1rem;
+        padding: 10px;
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+
+    /* LAYOUT GERAL: Coluna única */
     .layout-eventos-bilhete {
-        /* Antigo: .events-and-sidebar-layout */
         flex-direction: column;
         padding: 0.5rem;
     }
 
-    /* HEADER: Ajuste de navegação */
-    .cabecalho-principal {
-        /* Antigo: .main-header */
-        padding: 1rem;
-        /* Altera a navegação para ser horizontalmente scrollável ou oculta */
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 1rem;
+    .conteudo-eventos-principal {
+        min-width: 100%;
     }
 
-    .navegacao-principal {
-        /* Antigo: .main-nav */
-        order: 2;
-        /* Move a navegação principal para baixo no header em telas menores */
-        width: 100%;
-        overflow-x: auto;
-    }
-
-    .navegacao-principal ul {
-        /* Antigo: .main-nav ul */
-        justify-content: flex-start;
-        padding-bottom: 5px;
-        gap: 1rem;
-    }
-
-    /* SIDEBAR (Bilhete de Aposta): Oculta ou transforma em botão flutuante */
+    /* SIDEBAR / BILHETE */
     .barra-bilhete {
-        /* Antigo: .bet-slip-sidebar */
-        /* No mobile, o sidebar não pode ficar colado na tela */
-        position: relative;
         width: 100%;
-        margin-bottom: 1rem;
-        top: 0;
+        position: static;
+        margin-top: 1rem;
     }
-
-    /* CARD DE JOGO: Reduz o espaço */
-    .card-jogo {
-        /* Antigo: .match-card */
-        /* Mais espaço para o nome do time */
-        grid-template-columns: 2fr 3fr;
-        font-size: 0.9rem;
+    
+    /* BANNER */
+    .banner {
+        padding: 1.5rem 1rem;
     }
-
-    /* FOOTER: Layout de coluna única */
-    .footer-links-container {
-        flex-direction: column;
-        align-items: flex-start;
+    
+    .banner h2 {
+        font-size: 1.3rem;
+    }
+    
+    /* GRID DE CATEGORIAS (Bolinhas) */
+    .grid-categorias {
+        grid-template-columns: repeat(2, 1fr); /* 2 por linha */
+        gap: 0.5rem;
+    }
+    
+    .card-categoria {
+        height: 100px;
+        padding: 1rem;
     }
 }
 
-/* Smartphone (Telas até 600px) */
-@media (max-width: 600px) {
-
-    /* HEADER: Organização vertical */
-    .cabecalho-principal {
-        /* Antigo: .main-header */
-        flex-direction: column;
-        align-items: center;
+/* ================================================= */
+/* MOBILE PEQUENO (Telas até 480px) */
+/* ================================================= */
+@media (max-width: 480px) {
+    
+    .logo h1 {
+        display: none; /* Esconde o texto da logo em telas muito pequenas */
     }
-
-    .acoes-usuario {
-        /* Antigo: .user-actions */
-        margin-top: 0.5rem;
-        /* Retira o botão do fluxo e o posiciona no canto superior direito */
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
+    
+    .grid-categorias {
+        grid-template-columns: 1fr; /* 1 por linha em telas muito estreitas */
     }
-
-    /* LISTAGEM DE EVENTOS: Otimização extrema de espaço */
-    .sport-group h2 {
-        font-size: 1rem;
-    }
-
+    
     .card-jogo {
-        /* Antigo: .match-card */
-        /* Força a divisão em duas partes mais equilibradas para nomes curtos */
-        grid-template-columns: 1fr 1fr;
-        padding: 0.75rem 0.5rem;
+        grid-template-columns: 1fr; /* Times empilhados */
+        text-align: center;
     }
-
-    .apresentacao-time {
-        /* Antigo: .team-presentation */
-        /* Alinha a apresentação dos times à esquerda */
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.25rem;
+    
+    .team-presentation {
+        justify-content: center;
     }
-
-    .team-item figcaption {
-        font-size: 0.85rem;
-    }
-
-    /* ODDS: Empurra um pouco mais para a direita */
+    
     .mercado-cotacoes {
-        /* Antigo: .odds-market */
-        padding-left: 0.5rem;
-    }
-
-    .odd-labels,
-    .odd-values {
-        gap: 0.3rem;
-    }
-
-    .odd-item {
-        padding: 0.4rem 0.1rem;
-        font-size: 0.8rem;
-    }
-
-    /* FOOTER */
-    .footer-nav ul {
-        grid-template-columns: 1fr;
-        /* Lista em coluna única */
+        justify-content: center;
+        margin-top: 10px;
     }
 }

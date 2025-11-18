@@ -1,6 +1,6 @@
 :root {
-    --color-primary: #004d99; 
-    --color-primary-light: #007bff; 
+    --color-primary: #004d99;
+    --color-primary-light: #007bff;
     --color-highlight: #ffc107;
     --color-success: #28a745;
     --color-danger: #dc3545;
@@ -9,34 +9,40 @@
     --border-radius: 4px;
 }
 
-/* TEMA CLARO (Padrão) */
 :root {
-    --color-background: #f4f6f8; /* Fundo leve */
-    --color-surface: #ffffff; /* Fundo de Cards/Elementos */
-    --color-text: #343a40; /* Texto escuro */
-    --color-text-secondary: #6c757d; /* Texto secundário/data */
-    --color-border: #dee2e6; /* Linhas divisórias suaves */
-    --color-header-bg: #ffffff; 
-    --color-footer-bg: #343a40; 
+    --color-background: #f4f6f8;
+    --color-surface: #ffffff;
+    --color-text: #343a40;
+    --color-text-secondary: #6c757d;
+    --color-border: #dee2e6;
+    --color-header-bg: #ffffff;
+    --color-footer-bg: #343a40;
     --color-footer-text: #f4f6f8;
+}
+
+body.dark-mode {
+    --color-background: #121212;
+    --color-surface: #1e1e1e;
+    --color-text: #e0e0e0;
+    --color-text-secondary: #aaaaaa;
+    --color-border: #333333;
+    --color-header-bg: #1e1e1e;
+    --color-footer-bg: #000000;
+    --color-footer-text: #ffffff;
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --color-background: #121212; /* Fundo muito escuro */
-        --color-surface: #1e1e1e; /* Fundo de Cards/Elementos */
-        --color-text: #e0e0e0; /* Texto claro */
-        --color-text-secondary: #aaaaaa;
+        --color-background: #121212;
+        --color-surface: #1e1e1e;
+        --color-text: #ffffff;
+        --color-text-secondary: #e0e0e0;
         --color-border: #333333;
         --color-header-bg: #1e1e1e;
         --color-footer-bg: #000000;
         --color-footer-text: #ffffff;
     }
 }
-
-/* ================================================= */
-/* 1. RESET BÁSICO E TIPOGRAFIA */
-/* ================================================= */
 
 * {
     box-sizing: border-box;
@@ -50,6 +56,7 @@ body {
     font-family: var(--font-family-base);
     line-height: 1.6;
     min-height: 100vh;
+    margin: 10px;
 }
 
 a {
@@ -68,45 +75,38 @@ h1, h2, h3, h4, h5 {
     color: var(--color-text);
 }
 
-/* ================================================= */
-/* 2. LAYOUT GERAL E WRAPPER - NOVAS CLASSES */
-/* ================================================= */
-
-.container-principal { /* Antigo: .main-wrapper */
+.container-principal {
     max-width: var(--layout-max-width);
     margin: 0 auto;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05); 
-    background-color: var(--color-surface); 
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+    background-color: var(--color-surface);
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-/* O layout principal (Eventos + Sidebar) - NOVA CLASSE */
-.layout-eventos-bilhete { /* Antigo: .events-and-sidebar-layout */
+.layout-eventos-bilhete {
     display: flex;
     padding: 1rem;
     gap: 1rem;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
+    flex-grow: 1;
 }
 
-.conteudo-eventos-principal { /* Antigo: .main-events-content */
+.conteudo-eventos-principal {
     flex-grow: 1;
-    flex-basis: 0; 
+    flex-basis: 0;
     min-width: 65%;
 }
 
-
-/* ================================================= */
-/* 3. HEADER E NAVEGAÇÃO - NOVAS CLASSES */
-/* ================================================= */
-
-.cabecalho-principal { /* Antigo: .main-header */
+.cabecalho-principal {
     background-color: var(--color-header-bg);
     border-bottom: 1px solid var(--color-border);
     padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: sticky; 
+    position: sticky;
     top: 0;
     z-index: 100;
 }
@@ -118,29 +118,29 @@ h1, h2, h3, h4, h5 {
 }
 
 .logo img {
-    height: 30px;
+    height: 130px;
 }
 
-.navegacao-principal ul { /* Antigo: .main-nav ul */
+.navegacao-principal ul {
     list-style: none;
     display: flex;
     gap: 1.5rem;
 }
 
-.navegacao-principal a { /* Antigo: .main-nav a */
+.navegacao-principal a {
     color: var(--color-text-secondary);
     font-weight: 500;
     padding-bottom: 0.25rem;
     transition: color 0.3s, border-color 0.3s;
 }
 
-.navegacao-principal a:hover, /* Antigo: .main-nav a:hover */
-.navegacao-principal a.ativo { /* Antigo: .main-nav a.ativo */
+.navegacao-principal a:hover,
+.navegacao-principal a.ativo {
     color: var(--color-primary);
     border-bottom: 2px solid var(--color-primary);
 }
 
-.acoes-usuario .btn-entrar { /* Antigo: .user-actions .btn-login */
+.acoes-usuario .btn-entrar {
     background-color: var(--color-primary);
     color: var(--color-surface);
     padding: 0.5rem 1rem;
@@ -149,13 +149,24 @@ h1, h2, h3, h4, h5 {
     transition: background-color 0.3s;
 }
 
-.acoes-usuario .btn-entrar:hover { /* Antigo: .user-actions .btn-login:hover */
+.acoes-usuario .btn-entrar:hover {
     background-color: var(--color-primary-light);
 }
 
-/* ================================================= */
-/* 4. BANNER (Área cinza no topo do protótipo) */
-/* ================================================= */
+.acoes-usuario .btn-tema {
+    background-color: var(--color-primary);
+    color: var(--color-surface);
+    padding: 0.6rem 0.5rem;
+    border-radius: var(--border-radius);
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.acoes-usuario .btn-tema:hover {
+    background-color: var(--color-primary-light);
+}
 
 .banner {
     background-color: var(--color-background);
@@ -172,111 +183,29 @@ h1, h2, h3, h4, h5 {
 
 .banner h2 {
     color: var(--color-primary);
-    margin-bottom: 0.5rem;
-}
-
-/*
- * Adicione esta seção ao seu css/esportes.css (ou ao final do style.css)
- */
-
-.filtros-esporte {
-    margin-bottom: 1.5rem;
-    padding: 0 1rem;
-    overflow-x: auto; /* Permite scroll horizontal se a tela for pequena */
-    -webkit-overflow-scrolling: touch; /* Melhora o scroll em iOS */
-    white-space: nowrap; /* Impede que os itens quebrem linha */
-    border-bottom: 1px solid var(--color-border);
-}
-
-.filtros-esporte ul {
-    list-style: none;
-    display: flex; /* Transforma a lista em uma linha horizontal */
-    gap: 0.5rem;
-    padding-bottom: 0.5rem; /* Espaço para a sombra ou borda */
-}
-
-.filtros-esporte button {
-    /* Estilos base do botão */
-    background-color: var(--color-background);
-    border: 1px solid var(--color-border);
-    border-radius: var(--border-radius);
-    color: var(--color-text-secondary);
-    cursor: pointer;
-    padding: 0.4rem 0.8rem;
-    font-weight: 500;
-    font-size: 0.9rem;
-    white-space: nowrap;
-    transition: background-color 0.2s, border-color 0.2s, color 0.2s;
-    outline: none;
-}
-
-.filtros-esporte button:hover {
-    background-color: var(--color-border);
-    color: var(--color-text);
-}
-
-.filtros-esporte button.ativo {
-    background-color: var(--color-primary);
-    color: white;
-    border-color: var(--color-primary);
-    font-weight: 600;
-}
-
-/* ================================================= */
-/* 5. NAV DE FILTRO GERAL (Abaixo do Banner) - NOVAS CLASSES */
-/* ================================================= */
-
-.filtros-globais { /* Antigo: .global-filters */
+    font-size: 2rem;
     margin-bottom: 1rem;
-    padding: 0 1rem;
 }
 
-.botoes-filtro { /* Antigo: .filter-buttons */
-    display: flex;
-    list-style: none;
-    gap: 1.5rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid var(--color-border);
+.banner img {
+    width: 100%;
 }
 
-.btn-filtro { /* Antigo: .filter-btn */
-    background: none;
-    border: none;
-    color: var(--color-text-secondary);
-    cursor: pointer;
-    padding: 0.5rem 0;
-    font-weight: 600;
-    white-space: nowrap;
-    transition: color 0.3s, border-color 0.3s;
-    outline: none;
-}
-
-.btn-filtro:hover, /* Antigo: .filter-btn:hover */
-.btn-filtro.ativo { /* Antigo: .filter-btn.ativo */
-    color: var(--color-primary);
-    border-bottom: 2px solid var(--color-primary);
-}
-
-/* ================================================= */
-/* 6. FOOTER - NOVAS CLASSES */
-/* ================================================= */
-
-.rodape-principal { /* Antigo: .main-footer */
+.rodape-principal {
+    max-width: var(--layout-max-width);
     background-color: var(--color-footer-bg);
     color: var(--color-footer-text);
     padding: 2rem;
-    /* Usando 100% da largura para sair do container-principal e usar o fundo escuro */
-    width: 100vw; 
+    width: 100vw;
     position: relative;
     left: 50%;
     right: 50%;
-    margin-left: -50vw; 
-    margin-right: -50vw;
+    margin-left: -50%;
+    margin-right: -50%;
     font-size: 0.9rem;
 }
 
-/* Ajuste de margem para o rodapé */
-.container-principal + .rodape-principal { /* Antigo: .main-wrapper + .main-footer */
+.container-principal+.rodape-principal {
     margin-top: 2rem;
 }
 
@@ -318,14 +247,92 @@ h1, h2, h3, h4, h5 {
     text-align: center;
     opacity: 0.7;
     margin-top: 1rem;
-    /* Para centralizar o texto do copyright */
     max-width: var(--layout-max-width);
     margin: 1rem auto 0;
 }
 
-/* Placeholder para carregamento (UX) */
 .loading-placeholder {
     padding: 2rem;
     text-align: center;
     color: var(--color-text-secondary);
+}
+
+/* ================================================= */
+/* ESTILOS PARA O FILTRO DA HOME (Modalidades/Ligas) */
+/* ================================================= */
+/* Este bloco foi adicionado para estilizar as grades de botões da Home */
+
+.grid-categorias {
+    display: grid;
+    /* Define o layout de grade para os botões de categoria */
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    /* Cria colunas responsivas */
+    gap: 1rem;
+    /* Espaçamento entre os cards */
+    margin-top: 1rem;
+    /* Espaço acima da grade */
+}
+
+.card-categoria {
+    background-color: var(--color-surface);
+    /* Cor de fundo do card */
+    border: 1px solid var(--color-border);
+    /* Borda do card */
+    border-radius: var(--border-radius);
+    /* Cantos arredondados */
+    padding: 1.5rem;
+    /* Espaçamento interno */
+    display: flex;
+    /* Alinhamento dos itens internos */
+    flex-direction: column;
+    /* Organiza os itens em coluna (ícone em cima, texto embaixo) */
+    align-items: center;
+    /* Centraliza horizontalmente */
+    justify-content: center;
+    /* Centraliza verticalmente */
+    gap: 0.5rem;
+    /* Espaço entre o ícone e o texto */
+    cursor: pointer;
+    /* Mostra a "mãozinha" ao passar o mouse */
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    /* Animação suave */
+    height: 120px;
+    /* Altura fixa para todos os cards ficarem iguais */
+}
+
+.card-categoria:hover {
+    transform: translateY(-3px);
+    /* Levanta o card levemente ao passar o mouse */
+    border-color: var(--color-primary);
+    /* Muda a cor da borda */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    /* Adiciona uma sombra suave */
+}
+
+.cat-icon {
+    font-size: 2.5rem;
+    /* Tamanho do ícone (emoji) */
+}
+
+.cat-nome {
+    font-weight: 600;
+    /* Texto em negrito */
+    color: var(--color-text);
+    /* Cor do texto */
+    font-size: 1rem;
+    /* Tamanho da fonte */
+    text-align: center;
+    /* Centraliza o texto */
+}
+
+.card-liga {
+    height: 80px;
+    /* Altura menor para os cards de liga (sem ícone) */
+    background-color: var(--color-background);
+    /* Fundo levemente cinza */
+}
+
+.card-liga .cat-nome {
+    font-size: 0.9rem;
+    /* Fonte um pouco menor para as ligas */
 }
