@@ -1,0 +1,136 @@
+/*
+ * Arquivo: css/login.css
+ * Descrição: Estilos específicos para a tela de Login e Cadastro (login.html).
+ */
+
+/* ================================================= */
+/* LAYOUT DA PÁGINA DE LOGIN */
+/* ================================================= */
+
+/* Garante que o container (main) ocupe a maior parte da tela e centralize o box */
+.container-autenticacao { /* Antigo: .auth-container */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 80px); /* Subtrai a altura do cabeçalho */
+    padding: 2rem 1rem;
+}
+
+/* Caixa central que contém os formulários e abas */
+.caixa-autenticacao { /* Antigo: .auth-box */
+    width: 100%;
+    max-width: 400px;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Para garantir que as bordas do box sejam usadas */
+}
+
+/* Header/Menu simplificado no cabeçalho (apenas voltar) */
+.cabecalho-principal nav a {
+    color: var(--color-text-secondary);
+    transition: color 0.3s;
+}
+.cabecalho-principal nav a:hover {
+    color: var(--color-primary);
+}
+
+
+/* ================================================= */
+/* ABAS DE LOGIN/CADASTRO */
+/* ================================================= */
+
+.abas-autenticacao { /* Antigo: .auth-tabs */
+    display: flex;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.abas-autenticacao button {
+    flex: 1;
+    background: none;
+    border: none;
+    padding: 1rem 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    color: var(--color-text-secondary);
+    transition: color 0.3s, border-bottom 0.3s;
+    outline: none;
+}
+
+.abas-autenticacao button.active {
+    color: var(--color-primary);
+    border-bottom: 3px solid var(--color-primary);
+}
+
+/* ================================================= */
+/* FORMULÁRIOS DE AUTENTICAÇÃO */
+/* ================================================= */
+
+.form-autenticacao { /* Antigo: .auth-form */
+    padding: 2rem;
+}
+
+.form-autenticacao.hidden {
+    display: none;
+}
+
+.form-autenticacao h2 {
+    text-align: center;
+    color: var(--color-primary);
+    margin-bottom: 1.5rem;
+}
+
+.form-autenticacao label {
+    display: block;
+    margin-top: 1rem;
+    margin-bottom: 0.25rem;
+    font-weight: 500;
+}
+
+.form-autenticacao input[type="email"],
+.form-autenticacao input[type="password"],
+.form-autenticacao input[type="text"] {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    background-color: var(--color-background);
+    color: var(--color-text);
+}
+
+.btn-primary {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    margin-top: 1.5rem;
+    background-color: var(--color-primary-light);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: var(--color-primary);
+}
+
+.esqueceu-senha { /* Antigo: .forgot-password */
+    display: block;
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+}
+
+/* Mensagens de erro */
+.mensagem-erro { /* Antigo: .error-message */
+    color: var(--color-danger);
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+    margin-bottom: 0.5rem;
+    min-height: 1.2rem; /* Garante que o layout não salte ao exibir/ocultar */
+}

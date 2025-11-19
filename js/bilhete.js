@@ -28,8 +28,7 @@ function configurarBilhete() {
             
             const usuario = JSON.parse(localStorage.getItem('betsim_usuario'));
             if (!usuario) {
-                alert("Faça login para apostar!");
-                alert("A Função que você precisa, está em desenvolvimento. Aguarde!");
+                window.location.href = "login.html";
                 return;
             }
 

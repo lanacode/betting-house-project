@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BetSim | Entrar ou Cadastrar</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/esporte.css"> 
+    <link rel="stylesheet" href="css/responsivo.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
+</head>
+
+<body>
+
+    <div class="container-principal container-login">
+        
+        <header class="cabecalho-principal">
+            <figure class="logo">
+                
+                <img src="img/logo.png" alt="BetSim Logo">
+                <a href="index.html">
+                    <h1>BetSim</h1>
+                </a>
+            </figure>
+            <nav><a href="index.html">Voltar para o Início</a></nav>
+        </header>
+
+        <main class="container-autenticacao">
+            <section class="caixa-autenticacao">
+                
+                <nav class="abas-autenticacao">
+                    <button id="aba-entrar" class="active">Entrar</button>
+                    <button id="aba-cadastrar">Cadastrar</button>
+                </nav>
+
+                <form id="form-entrar" class="form-autenticacao active">
+                    <h2>Acesse sua conta</h2>
+                    
+                    <label for="email-entrar">Email:</label>
+                    <input type="email" id="email-entrar" name="email" required placeholder="seu.email@exemplo.com">
+                    <p class="mensagem-erro" id="erro-email-entrar"></p>
+
+                    <label for="senha-entrar">Senha:</label>
+                    <input type="password" id="senha-entrar" name="password" required placeholder="••••••••">
+                    
+                    <button type="submit" class="btn-primary">Entrar</button>
+                    <a href="#" class="esqueceu-senha">Esqueceu a senha?</a>
+                </form>
+
+                <form id="form-cadastrar" class="form-autenticacao hidden">
+                    <h2>Crie sua conta</h2>
+                    
+                    <label for="nome-cadastrar">Nome de Usuário:</label>
+                    <input type="text" id="nome-cadastrar" name="name" required placeholder="Seu Nome">
+
+                    <label for="email-cadastrar">Email:</label>
+                    <input type="email" id="email-cadastrar" name="email" required placeholder="seu.email@exemplo.com">
+                    <p class="mensagem-erro" id="erro-email-cadastrar"></p>
+                    
+                    <label for="senha-cadastrar">Senha:</label>
+                    <input type="password" id="senha-cadastrar" name="password" required placeholder="Mínimo 6 caracteres">
+                    <p class="mensagem-erro" id="erro-senha-cadastrar"></p>
+
+                    <label for="confirma-senha-cadastrar">Confirmar Senha:</label>
+                    <input type="password" id="confirma-senha-cadastrar" required placeholder="Repita a senha">
+                    <p class="mensagem-erro" id="erro-confirma-senha"></p>
+                    
+                    <button type="submit" class="btn-primary">Cadastrar</button>
+                </form>
+
+            </section>
+        </main>
+        
+        <footer class="rodape-principal rodape-minimal">
+            <p class="copyright-info">© 2025 BetSim. Simulador acadêmico.</p>
+        </footer>
+
+    </div>
+    
+    <script src="js/main.js"></script>
+    <script src="js/usuario.js"></script>
+    <script src="js/login.js"></script>
+</body>
+
+</html>
